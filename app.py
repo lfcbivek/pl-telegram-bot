@@ -37,7 +37,7 @@ def main():
     dp.add_handler(CommandHandler('standings',standings))
     dp.add_handler(CommandHandler('fixtures',fixtures))
     updater.start_webhook(listen="0.0.0.0",
-                          port=int(os.getnenv("PORT")),
+                          port=int(os.environ["PORT"]),
                           url_path=os.environ["BOT_TOKEN"])
     updater.bot.setWebhook('https://pl-telegram-bot.herokuapp.com/' + os.environ["BOT_TOKEN"])
     updater.idle()
