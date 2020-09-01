@@ -6,9 +6,9 @@ import requests
 
 
 def getStandings():
-    url = os.getenv("STANDINGS_URL")
+    url = os.environ["STANDINGS_URL"]
     headers = {
-        "X-Auth-Token" : os.getenv("API_KEY")
+        "X-Auth-Token" : os.environ["API_KEY"]
     }
     
     result = requests.get(url = url, headers=headers)

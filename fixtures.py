@@ -6,13 +6,13 @@ import requests
 
 
 def getFixtures(matchday):
-    url = os.getenv("FIXTURES_URL")
+    url = os.environ["FIXTURES_URL"]
     params = {
         'matchday': matchday
     }
     
     headers = {
-        'X-Auth-Token': os.getenv("API_KEY")
+        'X-Auth-Token': os.environ["API_KEY"]
     }
     
     result = requests.get(url=url, params = params,headers=headers)

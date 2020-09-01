@@ -32,14 +32,14 @@ def fixtures(update,context):
  
    
 def main():    
-    updater = Updater(os.getenv("BOT_TOKEN"),use_context = True)
+    updater = Updater(os.environ["BOT_TOKEN"],use_context = True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('standings',standings))
     dp.add_handler(CommandHandler('fixtures',fixtures))
     updater.start_webhook(listen="0.0.0.0",
                           port=int(os.getnenv("PORT")),
-                          url_path=os.getenv("BOT_TOKEN"))
-    updater.bot.setWebhook('https://pl-telegram-bot.herokuapp.com/' + os.getenv("BOT_TOKEN"))
+                          url_path=os.environ["BOT_TOKEN"])
+    updater.bot.setWebhook('https://pl-telegram-bot.herokuapp.com/' + os.environ["BOT_TOKEN"])
     updater.idle()
     
 if __name__ == '__main__':
