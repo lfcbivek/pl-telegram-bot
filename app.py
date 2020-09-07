@@ -33,7 +33,7 @@ def fpl(update,context):
     FPLProfile(context.args[0])
     with open("fpl_profile.txt","r") as f:
         fpl_data = f.read()
-    update.message_reply_text(fpl_data)
+    update.message.reply_text(fpl_data)
    
 def main():    
     updater = Updater(os.environ["BOT_TOKEN"],use_context = True)
