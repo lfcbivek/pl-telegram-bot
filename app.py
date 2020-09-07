@@ -6,6 +6,22 @@ import os
 from telegram.ext import Updater, CommandHandler
 from fpl_profile import FPLProfile
 
+datas = {
+    "dawadi":1738049,
+    "chhetri": 4354,
+    "ray": 723092,
+    "neku": 670039,
+    "macee":21350,
+    "sandesh": 269642,
+    "joshi":202071,
+    "syame": 16273,
+    "kidd": 40438,
+    "model": 65429,
+    "bivek": 2703
+    
+}
+
+
 def standings(update,context):
     
     getStandings()
@@ -30,7 +46,12 @@ def fixtures(update,context):
     
     
 def fpl(update,context):
-    FPLProfile(context.args[0])
+    id = datas[context.args[0]]
+    if isinstance(context.args[0], str):
+        if datas[context.args[0]]:
+            id = datas[context.args[0]]
+        
+    FPLProfile(id)
     with open("fpl_profile.txt","r") as f:
         fpl_data = f.read()
     update.message.reply_text(fpl_data)
