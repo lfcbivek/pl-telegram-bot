@@ -46,7 +46,7 @@ def fixtures(update,context):
     
     
 def fpl(update,context):
-    id = datas[context.args[0]]
+    id = context.args[0]
     if isinstance(context.args[0], str):
         if datas[context.args[0]]:
             id = datas[context.args[0]]
