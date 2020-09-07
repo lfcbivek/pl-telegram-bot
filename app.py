@@ -48,9 +48,11 @@ def fixtures(update,context):
 def fpl(update,context):
     id = context.args[0]
     if isinstance(context.args[0], str):
-        if datas[context.args[0]]:
-            id = datas[context.args[0]]
-        
+        try:
+            if datas[context.args[0]]:
+                id = datas[context.args[0]]
+        except:
+            pass    
     FPLProfile(id)
     with open("fpl_profile.txt","r") as f:
         fpl_data = f.read()
