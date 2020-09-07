@@ -4,7 +4,7 @@ load_dotenv()
 from standings import getStandings
 import os
 from telegram.ext import Updater, CommandHandler
-
+from fpl_profile import FPLProfile
 
 def standings(update,context):
     
@@ -29,13 +29,18 @@ def fixtures(update,context):
         update.message.reply_text("Invalid command format")
     
     
- 
+def fpl(update,context):
+    FPLProfile(context.args[0])
+    with open("fpl_profile.txt","r") as f:
+        fpl_data = f.read()
+    update.message_reply_text(fpl_data)
    
 def main():    
     updater = Updater(os.environ["BOT_TOKEN"],use_context = True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('standings',standings))
     dp.add_handler(CommandHandler('fixtures',fixtures))
+    dp.add_handler(CommandHandler('fpl',fpl))
     updater.start_webhook(listen="0.0.0.0",
                           port=int(os.environ["PORT"]),
                           url_path=os.environ["BOT_TOKEN"])
