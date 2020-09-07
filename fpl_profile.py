@@ -30,6 +30,7 @@ def FPLProfile(id):
     data = requests.get(url)
     data = data.json()
     favourite_team_id = data['favourite_team']
+    team_name = data['name']
     favourite_team = teams['{}'.format(str(favourite_team_id))]
     first_name = data['player_first_name']
     last_name = data['player_last_name']
@@ -39,6 +40,7 @@ def FPLProfile(id):
     
     with open("fpl_profile.txt","w") as f:
         f.write("Name: \t {} {} \n".format(first_name,last_name))
+        f.write("Team Name: \t {}  \n".format(team_name))
         f.write("Region: \t {}  \n".format(region_name))
         f.write("Favourite Team: \t {}  \n".format(favourite_team))
         f.write("Overall Points: \t {}  \n".format(overall_points))
