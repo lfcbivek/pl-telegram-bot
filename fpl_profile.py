@@ -31,7 +31,10 @@ def FPLProfile(id):
     data = data.json()
     favourite_team_id = data['favourite_team']
     team_name = data['name']
-    favourite_team = teams['{}'.format(str(favourite_team_id))]
+    try:
+        favourite_team = teams['{}'.format(str(favourite_team_id))]
+    except KeyError:
+        favourite_team = ""
     first_name = data['player_first_name']
     last_name = data['player_last_name']
     region_name = data['player_region_name']
